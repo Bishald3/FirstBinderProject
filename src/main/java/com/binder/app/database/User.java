@@ -12,7 +12,6 @@ import java.sql.PreparedStatement;
 public class User {
 
 	
-	@SuppressWarnings("null")
 	public static void viewTable() {
 		
 		

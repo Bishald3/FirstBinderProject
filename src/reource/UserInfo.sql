@@ -1,0 +1,7 @@
+CREATE TABLE User (
+Id INT,
+fName VARCHAR(50),
+lName VARCHAR(50),
+userName VARCHAR(250),
+password VARCHAR(250)
+);
