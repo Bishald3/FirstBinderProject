@@ -1,6 +1,6 @@
 /Users/ambarrana/github/FirstBinderProject/src/main/java/com/binder/app/entity/SettingUp.java
 /Users/ambarrana/github/FirstBinderProject/src/main/java/com/binder/app/action/HelloWorld.java
-/Users/ambarrana/github/FirstBinderProject/src/main/java/com/binder/app/entity/User.java
+/Users/ambarrana/github/FirstBinderProject/src/main/java/com/binder/app/entity/UserInfo.java
 /Users/ambarrana/github/FirstBinderProject/src/main/java/com/binder/app/rest/helper/TestHelper.java
 /Users/ambarrana/github/FirstBinderProject/src/main/java/com/binder/app/rest/helper/HibernateUtil.java
 /Users/ambarrana/github/FirstBinderProject/src/main/java/com/binder/app/entity/information.java
