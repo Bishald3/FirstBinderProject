@@ -54,11 +54,11 @@ public class UserInfo {
 		this.lName = lName;
 	}
 
-	public String getPasswor() {
+	public String getPassword() {
 		return password;
 	}
 
-	public void setPasswor(String password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
 
