@@ -1,25 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html >
+<html>
   <head>
     <meta charset="UTF-8">
     <title>Login/Sign-In</title>
-    
-    
     <link rel="stylesheet" href="http://localhost:8080/FirstBinderProject/resources/loginForm/css/normalize.css">
-
     <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
-
-        <link rel="stylesheet" href="http://localhost:8080/FirstBinderProject/resources/loginForm/css/style.css">
-
-    
-    
-    
+    <link rel="stylesheet" href="http://localhost:8080/FirstBinderProject/resources/loginForm/css/style.css">
   </head>
-
   <body>
-
     <div class="logmod">
   <div class="logmod__wrapper">
     <span class="logmod__close">Close</span>
@@ -145,7 +135,7 @@
 						}).done(function(data) {
 							alert("hit bho" + " "+data);
 						});
-				});
+					});
 				});
         </script>
   </body>
