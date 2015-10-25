@@ -6,6 +6,8 @@
     <meta charset="UTF-8">
     <title>Login/Sign-In</title>
     <link rel="stylesheet" href="http://localhost:8080/FirstBinderProject/resources/loginForm/css/normalize.css">
+    <link href= "<c:url value="/resources/loginForm/css/normalize.css"/>" rel="stylesheet" type="text/css"  />
+    
     <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
     <link rel="stylesheet" href="http://localhost:8080/FirstBinderProject/resources/loginForm/css/style.css">
   </head>

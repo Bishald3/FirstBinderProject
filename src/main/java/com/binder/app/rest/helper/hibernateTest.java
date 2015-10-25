@@ -3,12 +3,18 @@ package com.binder.app.rest.helper;
 import java.util.List;
 
 import org.hibernate.*;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.binder.app.entity.UserInfo;
 import com.binder.app.entity.information;
 import com.google.gson.Gson;
  
+@Controller
+
+
 public class hibernateTest {
+	@RequestMapping("/UserList")
 	public static void main( String[] args ){
 		
 		Session session = HibernateUtil.getSessionFactory().openSession(); 
