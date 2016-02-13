@@ -1,6 +1,8 @@
 package com.binder.app.action;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
@@ -18,6 +20,7 @@ import org.hibernate.SessionFactory;
 import org.jboss.resteasy.specimpl.RequestImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.support.RequestContext;
 
@@ -35,16 +38,21 @@ public class Users extends HttpServlet{
 		super();
 	}
 	
-		@RequestMapping("/users")
-	static public void UserList(){
+		@RequestMapping(value = "/users", method = RequestMethod.GET)
+	public List<String> list( List<String> nameList){
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Query query = session.createQuery("from UserInfo");
 		@SuppressWarnings("unchecked")
 		List<UserInfo> userList = query.list();
-	   
-		for(UserInfo list: userList){
-			System.out.println(list.getfName());
+		
+		 List<UserInfo> supplierNames1 = new ArrayList<UserInfo>();
+		 nameList = new ArrayList<String>();
+		for(UserInfo c: userList){
+			supplierNames1.add(c);
+			nameList.add(c.getfName());
 		}
+		System.out.println(nameList);
+		return nameList;
 	}
 	
 	@RequestMapping("/user")
@@ -68,4 +76,16 @@ public class Users extends HttpServlet{
 		session.getTransaction().commit();
 		session.close();
 	}
-}
+	
+	@RequestMapping("/userList")
+	public void doGet(HttpServletRequest req,HttpServletResponse res) throws ServletException, IOException{
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Query query = session.createQuery("from UserInfo");
+		@SuppressWarnings("unchecked")
+		List<UserInfo> userList = query.list();
+		String str = "lkajsdflk";
+		
+		req.setAttribute("product", userList); // Will be available as ${product} in JSP
+        req.getRequestDispatcher("/WEB-INF/product.jsp").forward(req, res);
+
+}}

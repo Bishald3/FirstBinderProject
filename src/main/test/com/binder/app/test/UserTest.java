@@ -22,7 +22,7 @@ public static void main(String[] args) {
         
         user.setfName("ambar");
         user.setlName("rana");
-        user.setPasswor("password");
+        user.setPassword("password");
         user.setUserName("arana");
         
         Gson gson = new Gson();
