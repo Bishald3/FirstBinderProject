@@ -18,6 +18,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.jboss.resteasy.specimpl.RequestImpl;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,6 +26,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.support.RequestContext;
 
 import com.binder.app.rest.helper.HibernateUtil;
+import com.google.gson.Gson;
+import com.binder.app.repository.*;
 
 @SuppressWarnings("serial")
 @Controller
@@ -38,21 +41,16 @@ public class Users extends HttpServlet{
 		super();
 	}
 	
-		@RequestMapping(value = "/users", method = RequestMethod.GET)
-	public List<String> list( List<String> nameList){
+		@RequestMapping(value = "/users", 
+				method = RequestMethod.GET,
+				produces = MediaType.APPLICATION_JSON_VALUE)
+	public void doGe(HttpServletRequest request,HttpServletResponse response) throws IOException{
+			
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Query query = session.createQuery("from UserInfo");
-		@SuppressWarnings("unchecked")
-		List<UserInfo> userList = query.list();
-		
-		 List<UserInfo> supplierNames1 = new ArrayList<UserInfo>();
-		 nameList = new ArrayList<String>();
-		for(UserInfo c: userList){
-			supplierNames1.add(c);
-			nameList.add(c.getfName());
-		}
-		System.out.println(nameList);
-		return nameList;
+		List<UserInfo> user = query.list();
+		Gson gson = new Gson();
+        response.getWriter().write(gson.toJson(user));
 	}
 	
 	@RequestMapping("/user")
@@ -64,6 +62,7 @@ public class Users extends HttpServlet{
 		String password = req.getParameter("password");
 		
 		//add UserInfo table 
+		
 		UserInfo urs = new UserInfo();
 		urs.setfName(fName);
 		urs.setlName(lName);
@@ -77,15 +76,12 @@ public class Users extends HttpServlet{
 		session.close();
 	}
 	
-	@RequestMapping("/userList")
-	public void doGet(HttpServletRequest req,HttpServletResponse res) throws ServletException, IOException{
-		Session session = HibernateUtil.getSessionFactory().openSession();
-		Query query = session.createQuery("from UserInfo");
-		@SuppressWarnings("unchecked")
-		List<UserInfo> userList = query.list();
-		String str = "lkajsdflk";
+	@RequestMapping("/loginAuth")
+	public void loginAuth(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
+		System.out.println("authentication going on");
+		String user = req.getParameter("email");
+		String pwd = req.getParameter("password");
 		
-		req.setAttribute("product", userList); // Will be available as ${product} in JSP
-        req.getRequestDispatcher("/WEB-INF/product.jsp").forward(req, res);
-
-}}
+		System.out.println(user+ "  --  " + pwd);
+	}
+	}
