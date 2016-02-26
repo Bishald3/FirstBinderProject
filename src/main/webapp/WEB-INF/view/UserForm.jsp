@@ -21,10 +21,54 @@
             </form>
             
    </dir>
+   		<table>
+		    <c:forEach items="${products}" var="product">
+		        <tr>
+		            <td>${product.name}</td>
+		            <td><a href="product?id=${product.id}">detail</a></td>
+		            <dl>
+					    <dt>ID</dt>
+					    <dd>${product.id}</dd>
+					    </dl>
+		        </tr>
+		    </c:forEach>
+		</table>
+   
+   <button id="showRow">Show Row</button>
+   <div >
+   	<ul id= "allList"></ul>
+   </div>
             
 		<!-- Javascript Jquery Source link -->
     	<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 		<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		
+		<script>
+		
+		$('button#showRow').on('click', function(){
+			/* $.ajax({url: "http://localhost:8080/FirstBinderProject/users", success: function(result){
+		        alert(result);
+		    }}); */
+		    var url = "http://localhost:8080/FirstBinderProject/userList";
+			
+		    
+			$.ajax({
+	            url: url,
+	            dataType: 'json',
+	            type: 'get',
+	            contentType: 'application/json',
+	            processData: false,
+	            async: true,
+	            success: function( data, textStatus, jQxhr ){
+	                console.log(data)
+	                
+	            },
+	            error: function( jqXhr, textStatus, errorThrown ){
+	                console.log( errorThrown );
+	            }
+	        });
+		});
+		</script>
   </body>
 </html>
