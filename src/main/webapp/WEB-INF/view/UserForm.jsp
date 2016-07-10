@@ -11,7 +11,7 @@
   </head>
   <body>
   <dir width= "80%">
-            <form action="http://localhost:8080/FirstBinderProject/user" method="post">
+            <form action="http://localhost:8087/FirstBinderProject/user" method="post">
             	<h2>User Information</h2>
             	<input type="text" name="fName" placeholder="First Name"/>
             	<input type="text" name="lName" placeholder="Last Name"/>
@@ -22,16 +22,10 @@
             
    </dir>
    		<table>
-		    <c:forEach items="${products}" var="product">
-		        <tr>
-		            <td>${product.name}</td>
-		            <td><a href="product?id=${product.id}">detail</a></td>
-		            <dl>
-					    <dt>ID</dt>
-					    <dd>${product.id}</dd>
-					    </dl>
-		        </tr>
-		    </c:forEach>
+		    <c:forEach items="${Users}" var="user">
+                <li>Name : <c:out value="${user.name}" />; 
+                Education : <c:out value="${user.education}"/>
+            </c:forEach>
 		</table>
    
    <button id="showRow">Show Row</button>
@@ -50,7 +44,7 @@
 			/* $.ajax({url: "http://localhost:8080/FirstBinderProject/users", success: function(result){
 		        alert(result);
 		    }}); */
-		    var url = "http://localhost:8080/FirstBinderProject/userList";
+		    var url = "http://localhost:8087/FirstBinderProject/users";
 			
 		    
 			$.ajax({
@@ -62,7 +56,9 @@
 	            async: true,
 	            success: function( data, textStatus, jQxhr ){
 	                console.log(data)
-	                
+	                for(var i=0; i < data.length; i++){
+	                	$('#allList').append('<li>'+ data[i].fName+ "  "+ data[i].lName+'</li>');
+	                }
 	            },
 	            error: function( jqXhr, textStatus, errorThrown ){
 	                console.log( errorThrown );

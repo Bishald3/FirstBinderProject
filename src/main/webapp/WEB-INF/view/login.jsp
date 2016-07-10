@@ -5,9 +5,9 @@
   <head>
     <meta charset="UTF-8">
     <title>Login/Sign-In</title>
-    <link rel="stylesheet" href="http://localhost:8080/FirstBinderProject/resources/loginForm/css/normalize.css">
+    <link rel="stylesheet" href="http://localhost:8087/FirstBinderProject/resources/loginForm/css/normalize.css">
     <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
-    <link rel="stylesheet" href="http://localhost:8080/FirstBinderProject/resources/loginForm/css/style.css">
+    <link rel="stylesheet" href="http://localhost:8087/FirstBinderProject/resources/loginForm/css/style.css">
   </head>
   <body>
     <div class="logmod">
@@ -75,17 +75,17 @@
           <span class="logmod__heading-subtitle">Enter your email and password <strong>to sign in</strong></span>
         </div> 
         <div class="logmod__form">
-          <form accept-charset="utf-8" action="#" class="simform">
+          <form accept-charset="utf-8" action="http://localhost:8087/FirstBinderProject/loginAuth" class="simform">
             <div class="sminputs">
               <div class="input full">
                 <label class="string optional" for="user-name">Email*</label>
-                <input class="string optional" maxlength="255" id="user-email" placeholder="Email" type="email" size="50" />
+                <input class="string optional" maxlength="255" id="user-email" name="email" placeholder="Email" type="email" size="50" />
               </div>
             </div>
             <div class="sminputs">
               <div class="input full">
                 <label class="string optional" for="user-pw">Password *</label>
-                <input class="string optional" maxlength="255" id="user-pw" placeholder="Password" type="password" size="50" />
+                <input class="string optional" maxlength="255"  name ="password" id="user-pw" placeholder="Password" type="password" size="50" />
                 						<span class="hide-password">Show</span>
               </div>
             </div>
@@ -124,13 +124,13 @@
     	<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 		<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-        <script src="http://localhost:8080/FirstBinderProject/resources/loginForm/js/index.js"></script>
+        <script src="http://localhost:8087/FirstBinderProject/resources/loginForm/js/index.js"></script>
         <script type="text/javascript">
         
 			$(document).ready(function($){
 				$("button#createAccount").click(function(){
 					$.ajax({
-						  url: "http://localhost:8080/FirstBinderProject/user",
+						  url: "http://localhost:8087/FirstBinderProject/user",
 						  context: document.body
 						}).done(function(data) {
 							alert("hit bho" + " "+data);

@@ -71,4 +71,7 @@ public class UserInfo {
 		this.userName = userName;
 	}
 	
+	public String toString(){
+		return "Id : " + getId() + "firstname : " + getfName() + " LastName : " + getlName() + " password : " + getPassword() +" userName : " + getUserName();
+	}
 }
