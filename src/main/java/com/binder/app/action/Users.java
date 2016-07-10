@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -32,10 +33,10 @@ import com.binder.app.repository.*;
 @SuppressWarnings("serial")
 @Controller
 public class Users extends HttpServlet{
-
+	UserRepository userRepo;
 	SessionFactory sessionFactory= HibernateUtil.getSessionFactory();
 	
-	Entity em;
+	EntityManager em;
 	 
 	public Users() {
 		super();
@@ -47,10 +48,31 @@ public class Users extends HttpServlet{
 	public void doGe(HttpServletRequest request,HttpServletResponse response) throws IOException{
 			
 		Session session = HibernateUtil.getSessionFactory().openSession();
-		Query query = session.createQuery("from UserInfo");
+		Query query = session.createQuery("from UserInfo"); 
 		List<UserInfo> user = query.list();
 		Gson gson = new Gson();
         response.getWriter().write(gson.toJson(user));
+	}
+		
+	@RequestMapping(value = "/alluser", 
+				method = RequestMethod.GET,
+				produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<UserInfo> gellAllUsers(){
+		System.out.println("from rest call ");
+		Query query = (Query) em.createQuery("SELECT * FROM UserInfo");
+		
+		System.out.println(query);
+		System.out.println("from UserInfo Repository");
+		List<UserInfo> urs = new ArrayList<UserInfo>();
+		System.out.println("not from new object");
+		try{
+			urs =  userRepo.findAll();
+		}
+		catch(Exception e){
+			System.out.println("from exception");
+			e.printStackTrace();
+		}
+		return urs;
 	}
 	
 	@RequestMapping("/user")
